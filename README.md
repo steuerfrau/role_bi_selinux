@@ -1,0 +1,1 @@
+# role_bi_selinux_permissive
