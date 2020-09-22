@@ -2,7 +2,7 @@
   shell: setenforce {{ role_bi_selinux_selinux_mode }}
   when:
     - ansible_facts['distribution'] == "CentOS"
-    - ansible_facts['distribution_major_version'] == "8"
+    - ansible_facts['distribution_major_version'] == "8" or ansible_facts['distribution_major_version'] == "7"
 
 - name: "Create /etc/selinux/config"
   template:
@@ -13,5 +13,5 @@
     mode: '0644'
   when:
     - ansible_facts['distribution'] == "CentOS"
-    - ansible_facts['distribution_major_version'] == "8"
+    - ansible_facts['distribution_major_version'] == "8" or ansible_facts['distribution_major_version'] == "7"
 
