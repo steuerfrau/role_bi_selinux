@@ -1,0 +1,17 @@
+- name: Set SELinux mode.
+  shell: setenforce {{ role_bi_selinux_selinux_mode }}
+  when:
+    - ansible_facts['distribution'] == "CentOS"
+    - ansible_facts['distribution_major_version'] == "8"
+
+- name: "Create /etc/selinux/config"
+  template:
+    src: templates/etc_selinux_config-{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.j2
+    dest: /etc/selinux/config
+    owner: root
+    group: root
+    mode: '0644'
+  when:
+    - ansible_facts['distribution'] == "CentOS"
+    - ansible_facts['distribution_major_version'] == "8"
+

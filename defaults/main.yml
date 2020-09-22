@@ -1,0 +1,3 @@
+---
+# defaults file for role_bi_selinux/
+role_bi_selinux_selinux_mode: "enforcing"
